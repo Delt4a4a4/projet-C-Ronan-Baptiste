@@ -95,7 +95,7 @@ int count_occurrences(COLUMN* col, int value){
 * @return: Value at position x
 */
 int get_value(COLUMN* col, int position){
-    if (col->tl<position){
+    if (col->tl<=position){
         printf("Error! No value is assigned to this position");
         return 0;
     }
