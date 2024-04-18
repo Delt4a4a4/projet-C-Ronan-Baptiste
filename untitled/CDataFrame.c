@@ -135,6 +135,22 @@ int count_lower(COLUMN* col, int value){
 }
 
 /**
+* @brief: Returns the number of values equal to x in a column.
+* @param1: Pointer to a column
+* @param2: Value x to compare against
+* @return: Number of values equal to x
+*/
+int count_equal(COLUMN* col, int value){
+    int occ=0;
+    for (int i=0; i<col->tl ; i++){
+        if ((col->tab)[i]=value){
+            occ++;
+        }
+    }
+    return occ;
+}
+
+/**
 * @brief: Create an empty CDataframe.
 * @return: Pointer to the created CDataframe.
 */
