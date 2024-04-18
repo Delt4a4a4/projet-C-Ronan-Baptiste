@@ -1,0 +1,3 @@
+C:/Users/Baptiste BERTRAND/OneDrive - Efrei/Bureau/Baptiste/Efrei/L1/semestre 2/algorithmique et structure de données/untitled/cmake-build-debug/CMakeFiles/untitled.dir
+C:/Users/Baptiste BERTRAND/OneDrive - Efrei/Bureau/Baptiste/Efrei/L1/semestre 2/algorithmique et structure de données/untitled/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Baptiste BERTRAND/OneDrive - Efrei/Bureau/Baptiste/Efrei/L1/semestre 2/algorithmique et structure de données/untitled/cmake-build-debug/CMakeFiles/rebuild_cache.dir
