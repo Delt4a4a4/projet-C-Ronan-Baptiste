@@ -5,7 +5,7 @@
 #ifndef PROJET_CDATAFRAME_H
 #define PROJET_CDATAFRAME_H
 
-#endif //PROJET_CDATAFRAME_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "column.h"
@@ -47,6 +47,7 @@ void modify_cell_in_CDataframe(CDATAFRAME* cdtframe, int row, int column);
 
 void display_column_names(CDATAFRAME* cdtframe);
 
+#endif //PROJET_CDATAFRAME_H
 
 
 

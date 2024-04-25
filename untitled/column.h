@@ -5,7 +5,7 @@
 #ifndef UNTITLED_COLUMN_H
 #define UNTITLED_COLUMN_H
 
-#endif //UNTITLED_COLUMN_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -31,3 +31,5 @@ int get_value(COLUMN* col, int position);
 int count_greater(COLUMN* col, int value);
 
 int count_lower(COLUMN* col, int value);
+
+#endif //UNTITLED_COLUMN_H

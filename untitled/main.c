@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "cdataframe.h"
 #include <stdlib.h>
+#include "column.h"
 
 int main() {
     printf("Hello, World!\n");
