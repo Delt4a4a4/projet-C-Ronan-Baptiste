@@ -4,6 +4,7 @@
 #include "cdataframe.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "column.h"
 
 /**
 * @brief: Create an empty CDataframe.
