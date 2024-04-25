@@ -13,7 +13,7 @@
 CDATAFRAME* create_empty_CDataframe(){
     CDATAFRAME* cdtframe=malloc(sizeof(CDATAFRAME));
     cdtframe->tab=malloc(sizeof(COLUMN*));
-    cdtframe->tp=0;
+    cdtframe->width=0;
     return cdtframe;
 }
 
@@ -35,7 +35,7 @@ void fill_CDataframe(CDATAFRAME* cdtframe){
 */
 void display_full_CDataframe(CDATAFRAME* cdtframe){
     for (int i=0 ; i<(cdtframe->tab)[0]->tl ; i++){
-        for (int j=0 ; j < cdtframe->tp ; j++){
+        for (int j=0 ; j < cdtframe->width ; j++){
             printf(" %d ",(cdtframe->tab)[i]->tab[j]);
         }
         printf("\n");

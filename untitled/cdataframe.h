@@ -16,7 +16,8 @@ CDataFrame
 
 typedef struct {
     COLUMN** tab;
-    int tp;
+    int width;
+    int height;
 }CDATAFRAME;
 
 CDATAFRAME* create_empty_CDataframe();
