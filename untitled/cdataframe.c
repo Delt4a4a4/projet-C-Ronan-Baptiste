@@ -55,6 +55,15 @@ void display_partial_rows(CDATAFRAME* cdtframe, int limit){
         printf("\n");
     }
 }
+void display_partial_rows2(CDATAFRAME* cdtframe, int limit){
+    for (int i=0 ; i< limit; i++){
+        for (int j=0 ; j < (cdtframe->width) ; j++){
+            if (i < (cdtframe->tab)[j]->tl){
+            printf(" %d ",(cdtframe->tab)[j]->tab[i]);
+        }}
+        printf("\n");
+    }
+}
 
 /**
 * @brief: Display a portion of the columns of the CDataframe according to a limit provided by the user.
