@@ -26,7 +26,23 @@ CDATAFRAME* create_empty_CDataframe(){
  * ?????????????????? Reverifier ce qu'il faut exactement faire ??????????????????
 */
 void fill_CDataframe(CDATAFRAME* cdtframe){
+    printf("verif a \n");
+    cdtframe->width=10;
+    cdtframe->height=10;
+    printf("verif b \n");
+    for (int i=0 ; i<10 ; i++){
+        cdtframe->tab[i]=create_column("A");
+        printf("verif c \n");
+        for (int j=0 ; j < 10 ; j++){
+            printf("verif d \n");
+            (cdtframe->tab)[i]->tab[j]=1; /* problème ici : accession à un espace mémoire non autorisé*/
+            printf("verif e \n");
+
+        }
+        printf("\n");
+    }
 }
+
 
 
 /**
@@ -34,11 +50,11 @@ void fill_CDataframe(CDATAFRAME* cdtframe){
 * @param1: Pointer to the CDataframe to be displayed.
 */
 void display_full_CDataframe(CDATAFRAME* cdtframe){
-    for (int i=0 ; i<(cdtframe->tab)[0]->tl ; i++){
+    for (int i=0 ; i<cdtframe->height ; i++){
         for (int j=0 ; j < cdtframe->width ; j++){
-            printf(" %d ",(cdtframe->tab)[i]->tab[j]);
+            printf(" %d a \n",(cdtframe->tab)[i]->tab[j]);
         }
-        printf("\n");
+        printf("a b\n");
     }
 }
 
@@ -48,7 +64,7 @@ void display_full_CDataframe(CDATAFRAME* cdtframe){
 * @param2: Limit provided by the user (number of rows to display).
 */
 void display_partial_rows(CDATAFRAME* cdtframe, int limit){
-    for (int i=0 ; i<(cdtframe->tab)[0]->tl ; i++){
+    for (int i=0 ; i<cdtframe->width ; i++){
         for (int j=0 ; j < limit ; j++){
             printf(" %d ",(cdtframe->tab)[i]->tab[j]);
         }
@@ -81,4 +97,5 @@ void display_partial_columns(CDATAFRAME* cdtframe, int limit){
         printf("\n");
     }
 }
+
 
