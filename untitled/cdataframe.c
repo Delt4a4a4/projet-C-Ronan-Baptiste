@@ -105,7 +105,7 @@ void unique_column_choice(CDATAFRAME* cdtframe){
         scanf(" %d",&n);
     }
     if(n>cdtframe->width){
-        printf("Cet colonne n'existe pas, voulez-vous créer une colonne %d ? \n 1) Oui \n 2) Non",cdtframe->width);
+        printf("Cette colonne n'existe pas, voulez-vous créer une colonne %d ? \n 1) Oui \n 2) Non",cdtframe->width);
         scanf(" %d",&test);
         if(test==1){
             Create_Cdataframe_Column(cdtframe);
@@ -126,5 +126,7 @@ void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
     cdtframe->tab=realloc(cdtframe->tab,sizeof(COLUMN*)*((cdtframe->width)+1));
     (cdtframe->tab)[cdtframe->width]= create_column(name);
     (cdtframe->width)++;
+    printf("%d \n",cdtframe->width);
+    printf("%d \n", (cdtframe->tab)[cdtframe->width-1]->titre);
     return;
 }
