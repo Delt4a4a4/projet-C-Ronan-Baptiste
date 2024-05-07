@@ -96,4 +96,3 @@ void display_partial_columns(CDATAFRAME* cdtframe, int limit){
     }
 }
 
-

@@ -92,12 +92,12 @@ int insert_value_in_col(COLUMN* col, int value, int pos){
 * @param3: Position where the value is to be modified.
 */
 void modify_value(COLUMN* col, int value, int pos){
-    if(pos>col->tl) {
+    if(pos>=col->tl) {
         int test = -1;
         printf("Erreur ligne %d trop grande / taille colonne %d \n", pos, (col->tl));
         while (test != 1 && test != 2) {
-            printf("Voulez_vous ajouter cette valeur à la fin de la colonne ? \n 1) Oui 2) Non");
-            scanf("%d", &test);
+            printf("Voulez_vous ajouter cette valeur a la fin de la colonne ? \n 1) Oui 2) Non");
+            scanf(" %d", &test);
         }
         if(test==1){
             insert_value(col,value);
@@ -130,7 +130,8 @@ void fill_column(COLUMN* col){
         printf("Combien de lignes voulez-vous remplir a partir de la ligne %d",col->tl);
         scanf("%d",&size);
     }
-    for(int i=0 ; i<size ; i++){
+    int tl=col->tl;
+    for(int i=tl ; i<size+tl ; i++){
         printf("Valeur de la ligne %d \n",i);
         scanf("%d",&value);
         insert_value(col,value);
@@ -145,7 +146,7 @@ void fill_and_replace_column(COLUMN* col){
     int first_row=-1;
     int last_row=-1;
     int value=0;
-    while(first_row<0){
+    while(first_row<0 || first_row>col->tl){
         printf("A partir de quelle ligne voulez-vous remplir la colonne ?");
         scanf("%d",&first_row);
     }
@@ -240,4 +241,82 @@ int count_lower(COLUMN* col, int value){
         }
     }
     return occ;
+}
+
+void fill_column_menu(COLUMN* col){
+    int choice=-1;
+    printf("\nMenu de remplissage d'une colonne : \n");
+    while(choice<0 || choice>5){
+        printf("Que voulez-vous faire ? \n "
+               "1) remplir la colonne en fixant un debut et une fin et en ecrasant les donnees pre-enregistrees \n "
+               "2) Commencer a remplir a la suite des donnees pre-enregistre \n "
+               "3) ajouter seulement une valeur a la suite \n "
+               "4) modifier une unique cellule \n");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1 : {fill_and_replace_column(col); break;}
+            case 2 : {fill_column(col); break;}
+            case 3 : {  int val=0;
+                printf("Quelle valeur voulez-vous insérer ?");
+                scanf("%d",&val);
+                insert_value(col,val); break;}
+            case 4 : {int val=0; int pos=0;
+                printf("Quelle position voulez-vous modifier ?");
+                scanf("%d",&pos);
+                printf("Quelle valeur voulez-vous inserer ?" );
+                scanf("%d",&val);
+                modify_value(col,val,pos); break;}
+            default : { printf("Error"); }
+        }
+    }
+}
+
+void delete_cells_menu(COLUMN* col){
+    int choice=-1;
+    while(choice!=1 && choice!=2){
+        printf("Que voulez-vous faire ? \n "
+               " 1) supprimer une unique cellule \n"
+               "2) supprimer plusieurs cellules de la colonne \n");
+        scanf(" %d",&choice);
+    switch(choice){
+        case 1 : {int pos=0;
+                    printf("A quelle ligne voulez-vous supprimer une cellule ?");
+                    scanf(" %d",&pos);
+                    delete_value(col,pos);break;}
+        case 2 :{delete_cells_in_column(col); break;}
+        default : { printf("Error"); }
+    }
+    }
+}
+
+void delete_cells_in_column(COLUMN* col){
+    int first_row=-1;
+    int last_row=-1;
+    int value=0;
+    while(first_row<0 || last_row>col->tl){
+        printf("A partir de quelle ligne voulez-vous supprimer des cellules ? \n");
+        scanf(" %d",&first_row);
+    }
+    while(last_row<first_row || last_row>col->tl){
+        printf("Jusqu'a quelle ligne voulez-vous supprimer des cellules (non inclue) ? \n");
+        scanf(" %d",&last_row);
+    }
+    for(int i=first_row; i<last_row ; i++){
+        delete_value(col,first_row);
+    }
+}
+
+void column_menu(COLUMN* col) {
+    int choice = -1;
+    while (choice != 1 && choice != 2) {
+        printf("Que voulez-vous faire ? \n "
+               " 1) Remplir ou modifier une ou des cellules \n"
+               " 2) supprimer une ou des cellules \n");
+        scanf(" %d", &choice);
+        switch (choice) {
+            case 1 :{fill_column_menu(col);break;}
+            case 2 : {delete_cells_menu(col); break;}
+            default : {printf("Error");}
+        }
+    }
 }

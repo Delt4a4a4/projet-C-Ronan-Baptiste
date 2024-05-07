@@ -42,4 +42,12 @@ int count_greater(COLUMN* col, int value);
 
 int count_lower(COLUMN* col, int value);
 
+void fill_column_menu(COLUMN* col);
+
+void delete_cells_menu(COLUMN* col);
+
+void delete_cells_in_column(COLUMN* col);
+
+void column_menu(COLUMN* col);
+
 #endif //UNTITLED_COLUMN_H

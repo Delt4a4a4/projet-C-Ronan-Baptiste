@@ -13,7 +13,7 @@ int main() {
         printf("Value added successfully to my column\n");
     else
         printf("Error adding value to my column\n");
-    /** insert_value(mycol, 52);
+    insert_value(mycol, 52);
     insert_value(mycol, 44);
     insert_value(mycol, 15);
     print_col(mycol);
@@ -22,11 +22,14 @@ int main() {
     insert_value_in_col(mycol,12,2);
     print_col(mycol);
     delete_value(mycol,2);
-    print_col(mycol);*/
+    print_col(mycol);
     fill_column(mycol);
     print_col(mycol);
     fill_and_replace_column(mycol);
     print_col(mycol);
+    column_menu(mycol);
+
+
     /**cdtframe->height=mycol->tl;
     cdtframe->width=3;
     (cdtframe->tab)[0]=mycol;
