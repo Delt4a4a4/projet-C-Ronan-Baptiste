@@ -50,4 +50,5 @@ void delete_cells_in_column(COLUMN* col);
 
 void column_menu(COLUMN* col);
 
+
 #endif //UNTITLED_COLUMN_H

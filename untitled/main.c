@@ -28,7 +28,8 @@ int main() {
     fill_and_replace_column(mycol);
     print_col(mycol);
     column_menu(mycol);
-
+    unique_column_choice(cdtframe);
+    display_full_CDataframe(cdtframe);
 
     /**cdtframe->height=mycol->tl;
     cdtframe->width=3;

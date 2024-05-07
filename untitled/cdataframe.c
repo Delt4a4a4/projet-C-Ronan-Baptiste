@@ -14,6 +14,7 @@ CDATAFRAME* create_empty_CDataframe(){
     CDATAFRAME* cdtframe=malloc(sizeof(CDATAFRAME));
     cdtframe->tab=malloc(sizeof(COLUMN*)*256);
     cdtframe->width=0;
+    cdtframe->height=0;
     return cdtframe;
 }
 
@@ -96,3 +97,34 @@ void display_partial_columns(CDATAFRAME* cdtframe, int limit){
     }
 }
 
+void unique_column_choice(CDATAFRAME* cdtframe){
+    int n=-1;
+    int test=0;
+    while(n<0){
+        printf("Quel est l'indice de la colonne que vous voulez modifier ?");
+        scanf(" %d",&n);
+    }
+    if(n>cdtframe->width){
+        printf("Cet colonne n'existe pas, voulez-vous créer une colonne %d ? \n 1) Oui \n 2) Non",cdtframe->width);
+        scanf(" %d",&test);
+        if(test==1){
+            Create_Cdataframe_Column(cdtframe);
+            n=cdtframe->width;
+        }
+        else{
+            return;
+        }
+    }
+    column_menu((cdtframe->tab)[n]);
+}
+
+void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
+    COLUMN** p=NULL;
+    char name[100];
+    printf("Saisir le nom de votre nouvelle colonne \n");
+    scanf(" %s",name);
+    cdtframe->tab=realloc(cdtframe->tab,sizeof(COLUMN*)*((cdtframe->width)+1));
+    (cdtframe->tab)[cdtframe->width]= create_column(name);
+    (cdtframe->width)++;
+    return;
+}

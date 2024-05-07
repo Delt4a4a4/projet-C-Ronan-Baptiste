@@ -48,6 +48,10 @@ void modify_cell_in_CDataframe(CDATAFRAME* cdtframe, int row, int column);
 
 void display_column_names(CDATAFRAME* cdtframe);
 
+void Create_Cdataframe_Column(CDATAFRAME* cdtframe);
+
+void unique_column_choice(CDATAFRAME* cdtframe);
+
 #endif //PROJET_CDATAFRAME_H
 
 
