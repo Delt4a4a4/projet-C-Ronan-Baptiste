@@ -68,7 +68,7 @@ int insert_value_in_col(COLUMN* col, int value, int pos){
 
     }
     if (col->tl==col->tp) {
-        COLUMN *p = NULL;
+        int *p = NULL;
         p = realloc(col->tab, sizeof(int) * ((col->tl) + 256));
         if (p == NULL) {
             printf("Erreur de reallocation \n");
@@ -92,8 +92,16 @@ int insert_value_in_col(COLUMN* col, int value, int pos){
 * @param3: Position where the value is to be modified.
 */
 void modify_value(COLUMN* col, int value, int pos){
-    if(pos>col->tl){
-        printf("Erreur ligne %d trop grande / taille colonne %d \n",pos,(col->tl) );
+    if(pos>col->tl) {
+        int test = -1;
+        printf("Erreur ligne %d trop grande / taille colonne %d \n", pos, (col->tl));
+        while (test != 1 && test != 2) {
+            printf("Voulez_vous ajouter cette valeur à la fin de la colonne ? \n 1) Oui 2) Non");
+            scanf("%d", &test);
+        }
+        if(test==1){
+            insert_value(col,value);
+        }
         return;
     }
     (col->tab)[pos]=value;
@@ -110,6 +118,48 @@ void delete_value(COLUMN* col, int pos){
     }
     (col->tl)--;
 }
+
+/**
+* @brief: Fill a column from the last occupied position of the column up to a user-chosen row.
+* @param1: Pointer to the column.
+*/
+void fill_column(COLUMN* col){
+    int size=-1;
+    int value=0;
+    while(size<0){
+        printf("Combien de lignes voulez-vous remplir a partir de la ligne %d",col->tl);
+        scanf("%d",&size);
+    }
+    for(int i=0 ; i<size ; i++){
+        printf("Valeur de la ligne %d \n",i);
+        scanf("%d",&value);
+        insert_value(col,value);
+    }
+}
+
+/**
+* @brief: Fill a column from a user-chosen start position up to a user-chosen end position and replace existing values.
+* @param1: Pointer to the column.
+*/
+void fill_and_replace_column(COLUMN* col){
+    int first_row=-1;
+    int last_row=-1;
+    int value=0;
+    while(first_row<0){
+        printf("A partir de quelle ligne voulez-vous remplir la colonne ?");
+        scanf("%d",&first_row);
+    }
+    while(last_row<first_row ){
+        printf("Jusqu'a quelle ligne voulez-vous remplir la colonne (non inclue) ?");
+        scanf("%d",&last_row);
+    }
+    for(int i=first_row ; i<last_row ; i++){
+        printf("Valeur de la ligne %d \n",i);
+        scanf("%d",&value);
+        modify_value(col,value,i);
+    }
+}
+
 
 /**
 * @brief : Free allocated memory

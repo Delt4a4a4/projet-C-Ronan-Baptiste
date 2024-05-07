@@ -26,6 +26,10 @@ void modify_value(COLUMN* col, int value, int pos);
 
 void delete_value(COLUMN* col, int pos);
 
+void fill_column(COLUMN* col);
+
+void fill_and_replace_column(COLUMN* col);
+
 void delete_column(COLUMN **col);
 
 void print_col(COLUMN* col);
