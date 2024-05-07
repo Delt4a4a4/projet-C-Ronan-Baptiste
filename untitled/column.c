@@ -38,18 +38,77 @@ int insert_value(COLUMN* col, int value){
         return 1;
 
     }
-    if (col->tl%256==0) {
+    if (col->tl==col->tp) {
         p=realloc(col->tab,sizeof(int)*((col->tl)+256));
         if(p==NULL){
+            printf("Erreur de reallocation \n");
             return 0;
         }
         col->tab=p;
-        col->tl=(col->tl)+256;
+        col->tp=(col->tp)+256;
 
     }
     col->tab[col->tl]=value;
     col->tl++;
     return 1;
+}
+
+/**
+* @brief: Insert a value into the column at the desired position.
+* @param1: Pointer to the column.
+* @param2: Value to be inserted.
+* @param3: Desired position for insertion.
+* @return: 1 if the value is inserted successfully, 0 otherwise.
+*/
+int insert_value_in_col(COLUMN* col, int value, int pos){
+    if(pos>col->tl){
+        printf("Cette ligne est trop grande donc la valeur %d est ajoutée à la fin de la colonne",value);
+        insert_value(col,value);
+        return 1;
+
+    }
+    if (col->tl==col->tp) {
+        COLUMN *p = NULL;
+        p = realloc(col->tab, sizeof(int) * ((col->tl) + 256));
+        if (p == NULL) {
+            printf("Erreur de reallocation \n");
+            return 0;
+        }
+        col->tab = p;
+        col->tp = (col->tp) + 256;
+    }
+    for (int i=(col->tl)-1; i>=pos ; i--){
+        (col->tab)[i+1]=(col->tab)[i];
+    }
+        (col->tab)[pos]=value;
+        (col->tl)++;
+        return 1;
+}
+
+/**
+* @brief: Modify the value stored at the specified position in the column to the given value.
+* @param1: Pointer to the column.
+* @param2: New value.
+* @param3: Position where the value is to be modified.
+*/
+void modify_value(COLUMN* col, int value, int pos){
+    if(pos>col->tl){
+        printf("Erreur ligne %d trop grande / taille colonne %d \n",pos,(col->tl) );
+        return;
+    }
+    (col->tab)[pos]=value;
+}
+
+/**
+* @brief: Delete the value located at the desired position in the column.
+* @param1: Pointer to the column.
+* @param2: Position of the value to be deleted.
+*/
+void delete_value(COLUMN* col, int pos){
+    for (int i=pos ; i<col->tl ; i++ ){
+        (col->tab)[i]=(col->tab)[i+1];
+    }
+    (col->tl)--;
 }
 
 /**

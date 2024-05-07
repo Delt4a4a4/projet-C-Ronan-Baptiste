@@ -20,6 +20,12 @@ COLUMN* create_column(char* title);
 
 int insert_value(COLUMN* col, int value);
 
+int insert_value_in_col(COLUMN* col, int value, int pos);
+
+void modify_value(COLUMN* col, int value, int pos);
+
+void delete_value(COLUMN* col, int pos);
+
 void delete_column(COLUMN **col);
 
 void print_col(COLUMN* col);
