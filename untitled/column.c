@@ -113,7 +113,7 @@ void modify_value(COLUMN* col, int value, int pos){
 * @param2: Position of the value to be deleted.
 */
 void delete_value(COLUMN* col, int pos){
-    for (int i=pos ; i<col->tl ; i++ ){
+    for (int i=pos ; i<(col->tl)-1 ; i++ ){
         (col->tab)[i]=(col->tab)[i+1];
     }
     (col->tl)--;
