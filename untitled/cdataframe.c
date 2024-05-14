@@ -141,9 +141,6 @@ void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
 }
 
 
-
-
-
 CDATAFRAME* create_empty_CDataframe2() {
     CDATAFRAME* cdtframe = malloc(sizeof(CDATAFRAME));
     cdtframe->tab = malloc(sizeof(COLUMN*) * 1); // Allouer de la mémoire pour un tableau de pointeurs de colonnes

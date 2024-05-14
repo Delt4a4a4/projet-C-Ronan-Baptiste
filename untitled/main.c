@@ -2,6 +2,7 @@
 #include "cdataframe.h"
 #include <stdlib.h>
 #include "column.h"
+#include "cdataframeLS.h"
 
 int main() {
     printf("Hello, World!\n");
@@ -34,6 +35,9 @@ int main() {
     print_col((cdtframe->tab)[0]);
     printf("test aaaa\n");
     print_col((cdtframe->tab)[1]);
+
+
+
     /**cdtframe->height=mycol->tl;
     cdtframe->width=3;
     (cdtframe->tab)[0]=mycol;
