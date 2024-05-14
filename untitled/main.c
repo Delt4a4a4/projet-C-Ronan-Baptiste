@@ -7,6 +7,7 @@ int main() {
     printf("Hello, World!\n");
     COLUMN *mycol = create_column("My column");
     CDATAFRAME* cdtframe=create_empty_CDataframe();
+
     printf("%s;%d;%d;%p \n",mycol->titre,mycol->tl,mycol->tp,mycol->tab);
     int val = 5;
     if (insert_value(mycol, val))
@@ -29,8 +30,10 @@ int main() {
     print_col(mycol);
     column_menu(mycol);
     unique_column_choice(cdtframe);
-    display_full_CDataframe(cdtframe);
-
+    printf("bonjour \n");
+    print_col((cdtframe->tab)[0]);
+    printf("test aaaa\n");
+    print_col((cdtframe->tab)[1]);
     /**cdtframe->height=mycol->tl;
     cdtframe->width=3;
     (cdtframe->tab)[0]=mycol;

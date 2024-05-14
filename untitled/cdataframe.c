@@ -12,8 +12,8 @@
 */
 CDATAFRAME* create_empty_CDataframe(){
     CDATAFRAME* cdtframe=malloc(sizeof(CDATAFRAME));
-    cdtframe->tab=malloc(sizeof(COLUMN*)*256);
-    cdtframe->width=0;
+    cdtframe->tab=malloc(sizeof(COLUMN*));
+    cdtframe->width=1;
     cdtframe->height=0;
     return cdtframe;
 }
@@ -63,6 +63,13 @@ void display_full_CDataframe(CDATAFRAME* cdtframe){
 }
 
 
+void display_full_CDataframe2(CDATAFRAME* cdtframe){
+    for (int i=0 ; i<cdtframe->width ; i++){
+        printf("Column %d \n",i);
+        print_col((cdtframe->tab)[i]);
+    }
+}
+
 /**
 * @brief: Display a portion of the rows of the CDataframe according to a limit provided by the user.
 * @param1: Pointer to the CDataframe.
@@ -104,12 +111,12 @@ void unique_column_choice(CDATAFRAME* cdtframe){
         printf("Quel est l'indice de la colonne que vous voulez modifier ?");
         scanf(" %d",&n);
     }
-    if(n>cdtframe->width){
+    if(n>=cdtframe->width){
         printf("Cette colonne n'existe pas, voulez-vous créer une colonne %d ? \n 1) Oui \n 2) Non",cdtframe->width);
         scanf(" %d",&test);
         if(test==1){
             Create_Cdataframe_Column(cdtframe);
-            n=cdtframe->width;
+            n=(cdtframe->width)-1;
         }
         else{
             return;
@@ -123,10 +130,24 @@ void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
     char name[100];
     printf("Saisir le nom de votre nouvelle colonne \n");
     scanf(" %s",name);
+    printf("test 1 \n");
     cdtframe->tab=realloc(cdtframe->tab,sizeof(COLUMN*)*((cdtframe->width)+1));
+    printf("test 2 \n");
     (cdtframe->tab)[cdtframe->width]= create_column(name);
     (cdtframe->width)++;
     printf("%d \n",cdtframe->width);
-    printf("%d \n", (cdtframe->tab)[cdtframe->width-1]->titre);
+    printf("%s \n", (cdtframe->tab)[cdtframe->width-1]->titre);
     return;
+}
+
+
+
+
+
+CDATAFRAME* create_empty_CDataframe2() {
+    CDATAFRAME* cdtframe = malloc(sizeof(CDATAFRAME));
+    cdtframe->tab = malloc(sizeof(COLUMN*) * 1); // Allouer de la mémoire pour un tableau de pointeurs de colonnes
+    cdtframe->width = 0;
+    cdtframe->height = 0;
+    return cdtframe;
 }

@@ -52,6 +52,8 @@ void Create_Cdataframe_Column(CDATAFRAME* cdtframe);
 
 void unique_column_choice(CDATAFRAME* cdtframe);
 
+void display_full_CDataframe2(CDATAFRAME* cdtframe);
+
 #endif //PROJET_CDATAFRAME_H
 
 
