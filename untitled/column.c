@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "column.h"
+#include <string.h>
 /**
 * Create a column
 * @param1 : Column title
@@ -11,7 +12,8 @@
 */
 COLUMN* create_column(char* title){
     COLUMN* colonne= malloc(sizeof(COLUMN));
-    colonne->titre=title;
+    colonne->titre=malloc(sizeof(char)*(strlen(title)+1));
+    strcpy(colonne->titre,title);
     colonne->tab=NULL;
     colonne->tl=0;
     colonne->tp=0;
@@ -33,10 +35,6 @@ int insert_value(COLUMN* col, int value){
         }
         col->tab=p;
         col->tp=256;
-        col->tab[0]=value;
-        col->tl=1;
-        return 1;
-
     }
     if (col->tl==col->tp) {
         p=realloc(col->tab,sizeof(int)*((col->tl)+256));
@@ -48,8 +46,7 @@ int insert_value(COLUMN* col, int value){
         col->tp=(col->tp)+256;
 
     }
-    col->tab[col->tl]=value;
-    col->tl++;
+    col->tab[(col->tl)++]=value;
     return 1;
 }
 
