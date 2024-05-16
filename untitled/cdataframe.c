@@ -12,7 +12,7 @@
 */
 CDATAFRAME* create_empty_CDataframe(){
     CDATAFRAME* cdtframe=malloc(sizeof(CDATAFRAME));
-    cdtframe->tab=malloc(sizeof(COLUMN*)*1);
+    cdtframe->tab=malloc(sizeof(COLUMN*)*256);
     cdtframe->width=0;
     cdtframe->height=0;
     return cdtframe;
@@ -44,7 +44,7 @@ void fill_CDataframe(CDATAFRAME* cdtframe){
 * @param1: Pointer to the CDataframe to be displayed.
 */
 void display_full_CDataframe(CDATAFRAME* cdtframe){
-    for (int i=0 ; i<cdtframe->height ; i++){
+    for (int i=0 ; i<cdtframe->width ; i++){
         printf("     [%d]     ",i);
     }
     printf("\n");
@@ -116,6 +116,9 @@ void unique_column_choice(CDATAFRAME* cdtframe){
         }
     }
     column_menu((cdtframe->tab)[n]);
+    if((cdtframe->tab)[cdtframe->width]->tl>cdtframe->height){
+        cdtframe->height=(cdtframe->tab)[cdtframe->width]->tl;
+    }
 }
 
 void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
@@ -125,9 +128,6 @@ void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
     scanf(" %s",name);
     cdtframe->tab=realloc(cdtframe->tab,sizeof(COLUMN*)*((cdtframe->width)+1));
     (cdtframe->tab)[cdtframe->width]= create_column(name);
-    if((cdtframe->tab)[cdtframe->width]->tl>cdtframe->height){
-        cdtframe->height=(cdtframe->tab)[cdtframe->width]->tl;
-    }
     (cdtframe->width)++;
     printf("%d \n",cdtframe->width);
     printf("%d \n", (cdtframe->tab)[cdtframe->width-1]->titre);
