@@ -109,7 +109,7 @@ void modify_value(COLUMN* col, int value, int pos){
 * @param2: Position of the value to be deleted.
 */
 void delete_value(COLUMN* col, int pos){
-    if(pos=>col->tl){
+    if(pos>=col->tl){
         printf("La casse que vous tentez de supprimer n'existe pas");
     }
     for (int i=pos ; i<col->tl ; i++ ){
