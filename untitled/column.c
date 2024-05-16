@@ -62,7 +62,6 @@ int insert_value_in_col(COLUMN* col, int value, int pos){
         printf("Cette ligne est trop grande donc la valeur %d est ajoutée à la fin de la colonne",value);
         insert_value(col,value);
         return 1;
-
     }
     if (col->tl==col->tp) {
         int *p = NULL;
@@ -110,6 +109,9 @@ void modify_value(COLUMN* col, int value, int pos){
 * @param2: Position of the value to be deleted.
 */
 void delete_value(COLUMN* col, int pos){
+    if(pos=>col->tl){
+        printf("La casse que vous tentez de supprimer n'existe pas");
+    }
     for (int i=pos ; i<col->tl ; i++ ){
         (col->tab)[i]=(col->tab)[i+1];
     }
