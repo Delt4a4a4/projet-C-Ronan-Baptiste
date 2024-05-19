@@ -10,12 +10,9 @@ int main() {
     printf("%s;%d;%d;%p \n",mycol->titre,mycol->tl,mycol->tp,mycol->tab);
     int val = 5;
 
-
-    Create_Cdataframe_Column(cdtframe);
-    unique_column_choice(cdtframe);
-    Create_Cdataframe_Column(cdtframe);
-    unique_column_choice(cdtframe);
-    display_full_CDataframe(cdtframe);
+    print_col(mycol);
+    column_menu(mycol);
+    print_col(mycol);
     printf("%d \n", count_occurrences(mycol,5));
     return 0;
 

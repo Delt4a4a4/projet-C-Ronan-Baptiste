@@ -27,8 +27,8 @@ CDATAFRAME* create_empty_CDataframe(){
  * ?????????????????? Reverifier ce qu'il faut exactement faire ??????????????????
 */
 void fill_CDataframe(CDATAFRAME* cdtframe){
-    cdtframe->width=7;
-    cdtframe->height=7;
+    cdtframe->width=8;
+    cdtframe->height=8;
     for (int i=0 ; i<cdtframe->width ; i++){
         (cdtframe->tab)[i]=create_column("A");
         for (int j=0 ; j < cdtframe->height ; j++){
@@ -126,10 +126,9 @@ void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
     char name[100];
     printf("Saisir le nom de votre nouvelle colonne \n");
     scanf(" %s",name);
-    cdtframe->tab=realloc(cdtframe->tab,sizeof(COLUMN*)*((cdtframe->width)+1));
+    cdtframe->tab = (COLUMN*) realloc(cdtframe->tab,sizeof(COLUMN)*((cdtframe->width)+1));
     (cdtframe->tab)[cdtframe->width]= create_column(name);
     (cdtframe->width)++;
     printf("%d \n",cdtframe->width);
-    printf("%d \n", (cdtframe->tab)[cdtframe->width-1]->titre);
-    return;
+    printf("%s \n", (cdtframe->tab)[cdtframe->width-1]->titre);
 }
