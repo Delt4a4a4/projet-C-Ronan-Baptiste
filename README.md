@@ -14,6 +14,8 @@ L'execution de ce programme nécessite un interpréteur de langage C pouvant acc
 
 L'utilisation de notre CDATAFRAME se fera depuis un menu disponible lors de l'exécution du fichier main.c à l'aide un interpréteur de langage C.
 Il suffit donc de choisir la fonctionnalité que l'on veut grâce au menu, par exeple fill cdataframe puis faire ce que le code vous dis de faire.
+Il est conseillé de cliquer sur remplir en dur le cdataframe pour une meilleure utilisation du programme. 
+La fonctionalité 1 peut ne pas fonctionner à des moments.
 
 
 ## Nous contacter :
