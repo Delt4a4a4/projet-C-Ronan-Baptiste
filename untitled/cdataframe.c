@@ -150,6 +150,11 @@ void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
     printf("%s \n", (cdtframe->tab)[cdtframe->width-1]->titre);
 }
 
+/**
+* @brief: Allows you to delete few columns in the Cdataframe thanks to indexes
+* @param1: Pointer to the CDataframe.
+* @return: modification of CDataframe no need to return something
+*/
 void delete_multiple_columns(CDATAFRAME* cdtframe){
     if (cdtframe->width==0){
         printf("Erreur, le cdataframe est vide \n");
@@ -171,7 +176,12 @@ void delete_multiple_columns(CDATAFRAME* cdtframe){
     }
 }
 
-
+/**
+* @brief: Allows you to delete one column in the Cdataframe thanks to indexes
+* @param1: Pointer to the CDataframe.
+* @param2 :Value for the position of the column
+* @return: modification of CDataframe no need to return something
+*/
 void delete_column_from_CDataframe(CDATAFRAME* cdtframe, int pos){
     if (cdtframe->width==0){
         printf("Erreur, le cdataframe est vide \n");
@@ -188,6 +198,12 @@ void delete_column_from_CDataframe(CDATAFRAME* cdtframe, int pos){
     (cdtframe->width)--;
 }
 
+/**
+* @brief: Allows you to delete one in the Cdataframe thanks to indexes
+* @param1: Pointer to the CDataframe.
+* @param2 :Value for the position of the row
+* @return: modification of CDataframe no need to return something
+*/
 void delete_row_from_CDataframe(CDATAFRAME* cdtframe, int index){
     if(index>=cdtframe->height){
         printf("La ligne que vous tentez de supprimer n'existe pas");
@@ -199,6 +215,12 @@ void delete_row_from_CDataframe(CDATAFRAME* cdtframe, int index){
     (cdtframe->height)--;
 }
 
+/**
+* @brief: allows you to count the number of occurrences of a value in the Cdataframe
+* @param1: Pointer to the CDataframe.
+* @param2 :Value we are searching
+* @return: number of occurences
+*/
 int count_occurrences_in_cdataframe(CDATAFRAME* cdtframe, int x){
     int somme=0;
     for(int i=0 ; i<cdtframe->width ; i++){
@@ -207,6 +229,12 @@ int count_occurrences_in_cdataframe(CDATAFRAME* cdtframe, int x){
     return somme;
 }
 
+/**
+* @brief: allows you to count the number of values greater than x in Cdataframe
+* @param1: Pointer to the CDataframe.
+* @param2 :Value we use to compare
+* @return: number of value greater than x in Cdataframe
+*/
 int count_greater_in_cdataframe(CDATAFRAME* cdtframe, int x){
     int somme=0;
     for(int i=0 ; i<cdtframe->width ; i++){
@@ -215,6 +243,12 @@ int count_greater_in_cdataframe(CDATAFRAME* cdtframe, int x){
     return somme;
 }
 
+/**
+* @brief: allows you to count the number of values lower than x in Cdataframe
+* @param1: Pointer to the CDataframe.
+* @param2 :Value we use to compare
+* @return: number of value lower than x in Cdataframe
+*/
 int count_lower_in_cdataframe(CDATAFRAME* cdtframe, int x){
     int somme=0;
     for(int i=0 ; i<cdtframe->width ; i++){
@@ -223,14 +257,29 @@ int count_lower_in_cdataframe(CDATAFRAME* cdtframe, int x){
     return somme;
 }
 
+/**
+* @brief: allows you to print the width of column
+* @param1: Pointer to the CDataframe.
+* @return: printing the value so no need to return something
+*/
 void print_width(CDATAFRAME* cdtframe){
     printf("Votre cdataframe contient %d colonnes \n",cdtframe->width);
 }
 
+/**
+* @brief: allows you to print the height of column
+* @param1: Pointer to the CDataframe.
+* @return: printing the value so no need to return something
+*/
 void print_height(CDATAFRAME* cdtframe){
     printf("Votre cdataframe contient %d lignes\n", cdtframe->height);
 }
 
+/**
+* @brief: allows you to add a row in Cdataframe
+* @param1: Pointer to the CDataframe.
+* @return: modification of CDataframe no need to return something
+*/
 void append_row_in_cdataframe(CDATAFRAME* cdtframe){
     int row=-1;
     int val;
@@ -247,6 +296,11 @@ void append_row_in_cdataframe(CDATAFRAME* cdtframe){
     (cdtframe->height)++;
 }
 
+/**
+* @brief: allows you to rename a column in Cdataframe
+* @param1: Pointer to the CDataframe.
+* @return: modification of CDataframe no need to return something
+*/
 void rename_cdataframe_column(CDATAFRAME* cdtframe){
     char title[100];
     int column=-1;
@@ -261,6 +315,11 @@ void rename_cdataframe_column(CDATAFRAME* cdtframe){
     rename_column((cdtframe->tab)[column]);
 }
 
+/**
+* @brief: allows you to print the name of a column in Cdataframe
+* @param1: Pointer to the CDataframe.
+* @return: printing the value so no need to return something
+*/
 void print_cdataframe_column_name(CDATAFRAME* cdtframe){
     int column=-1;
     if(cdtframe->width==0){
@@ -274,6 +333,11 @@ void print_cdataframe_column_name(CDATAFRAME* cdtframe){
     printf("Le nom de la colonne %d est %s \n",column,(cdtframe->tab)[column]->titre);
 }
 
+/**
+* @brief: allows you to print the name of all columns in Cdataframe
+* @param1: Pointer to the CDataframe.
+* @return: printing the value so no need to return something
+*/
 void print_full_cdataframe_titles(CDATAFRAME* cdtframe){
     printf("Les noms des colonnes du cdataframe sont :");
     for (int i=0 ; i<cdtframe->width ; i++){
@@ -281,6 +345,11 @@ void print_full_cdataframe_titles(CDATAFRAME* cdtframe){
     }
 }
 
+/**
+* @brief: allows you to choose which modification/add to make in the Dataframe
+* @param1: Pointer to the CDataframe.
+* @return: modification of CDataframe no need to return something
+*/
 void cdataframe_menu(CDATAFRAME* cdtframe) {
     int choice = -1;
     while (choice != 6) {
@@ -318,7 +387,12 @@ void cdataframe_menu(CDATAFRAME* cdtframe) {
     }
 }
 
-    void display_cdataframe_menu(CDATAFRAME *cdtframe) {
+/**
+* @brief: allows you to choose which Dataframe information to print
+* @param1: Pointer to the CDataframe.
+* @return: printing the value so no need to return something
+*/
+void display_cdataframe_menu(CDATAFRAME *cdtframe) {
         int choice = -1;
         while (choice != 6) {
             printf("\nMenu d'affichage du CDATAFRAME : \n");
@@ -366,7 +440,12 @@ void cdataframe_menu(CDATAFRAME* cdtframe) {
         }
     }
 
-    void modif_cdataframe_menu(CDATAFRAME *cdtframe) {
+/**
+* @brief: allows you to choose which modification to make in the Dataframe, he must be not empty
+* @param1: Pointer to the CDataframe.
+* @return: modification of CDataframe no need to return something
+*/
+void modif_cdataframe_menu(CDATAFRAME *cdtframe) {
         if (cdtframe->width==0){
             printf("Erreur, le cdataframe est vide, vous ne pouvez pas acceder à ce menu \n");
             return;
@@ -411,8 +490,12 @@ void cdataframe_menu(CDATAFRAME* cdtframe) {
             }
         }
     }
-
-    void additionnal_cdataframe_functions_menu(CDATAFRAME *cdtframe) {
+/**
+* @brief: allows you to choose which information you want to know in the Dataframe
+* @param1: Pointer to the CDataframe.
+* @return: printing the value so no need to return something
+*/
+void additionnal_cdataframe_functions_menu(CDATAFRAME *cdtframe) {
         int choice = -1, val = 0;
         while (choice != 5) {
             printf("\nMenu des fonctions d'Analyse du CDATAFRAME : \n");
