@@ -21,10 +21,6 @@ CDATAFRAME* create_empty_CDataframe(){
 /**
 * @brief: Fill the CDataframe from user inputs or hard-coded values.
 * @param1: Pointer to the CDataframe to be filled.
- *
- *
- *
- * ?????????????????? Reverifier ce qu'il faut exactement faire ??????????????????
 */
 void fill_CDataframe(CDATAFRAME* cdtframe){
     cdtframe->width=8;
@@ -97,6 +93,10 @@ void display_partial_columns(CDATAFRAME* cdtframe, int limit){
     }
 }
 
+/**
+* @brief: Allows you to choose a column to modify using its index
+* @param1: Pointer to the CDataframe.
+*/
 void unique_column_choice(CDATAFRAME* cdtframe){
     int n=-1;
     int test=0;
@@ -121,6 +121,10 @@ void unique_column_choice(CDATAFRAME* cdtframe){
     }
 }
 
+/**
+* @brief: Allows you to create an empty column in the dataframe
+* @param1: Pointer to the CDataframe.
+*/
 void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
     COLUMN** p=NULL;
     char name[100];
