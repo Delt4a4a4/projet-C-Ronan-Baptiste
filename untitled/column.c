@@ -1,6 +1,11 @@
 //
 // Created by Baptiste BERTRAND on 21/04/2024.
 //
+/**
+* Projet_C_Ronan_Baptiste
+* Baptiste BERTRAND / Ronan MYCHALSKI
+* Contient les fonctions en lien avec les colonnes.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include "column.h"

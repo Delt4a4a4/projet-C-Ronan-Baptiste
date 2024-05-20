@@ -1,3 +1,8 @@
+/**
+* Projet_C_Ronan_Baptiste
+* Baptiste BERTRAND / Ronan MYCHALSKI
+* Contient les fonctions qui permettent de lancer le projet.
+*/
 #include <stdio.h>
 #include "cdataframe.h"
 #include <stdlib.h>

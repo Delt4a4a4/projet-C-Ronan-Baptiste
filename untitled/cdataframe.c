@@ -1,6 +1,11 @@
 //
 // Created by Baptiste BERTRAND on 17/04/2024.
 //
+/**
+* Projet_C_Ronan_Baptiste
+* Baptiste BERTRAND / Ronan MYCHALSKI
+* Contient les fonctions en lien avec le cdataframe.
+*/
 #include "cdataframe.h"
 #include <stdio.h>
 #include <stdlib.h>
