@@ -362,6 +362,11 @@ void column_menu(COLUMN* col) {
     }
 }
 
+/**
+* @brief:Allows you to choose a new name to the column
+* @param1: Pointer to a column
+* @return: modification of the column no need to return something
+*/
 void rename_column(COLUMN* col){
     char title[100];
     printf("Comment voulez-vous appeler votre colonne ?");
@@ -369,7 +374,11 @@ void rename_column(COLUMN* col){
     col->titre=(char *)realloc(col->titre,(sizeof(char)*(strlen(title)+1)));
     strcpy(col->titre,title);
 }
-
+/**
+* @brief:Allows you to choose a new name to the column
+* @param1: Pointer to a column
+* @return: display of the column name no need to return something
+*/
 void print_name_column(COLUMN* col){
     printf("Le nom de votre colonne est %s",col->titre);
 }
