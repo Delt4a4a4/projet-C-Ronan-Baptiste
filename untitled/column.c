@@ -1,6 +1,11 @@
 //
 // Created by Baptiste BERTRAND on 21/04/2024.
 //
+/**
+* Projet_C_Ronan_Baptiste
+* Baptiste BERTRAND / Ronan MYCHALSKI
+* Contient les fonctions en lien avec les colonnes.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include "column.h"
@@ -321,7 +326,7 @@ void delete_cells_in_column(COLUMN* col){
     int first_row=-1;
     int last_row=-1;
     int value=0;
-    while(first_row<0 || last_row>col->tl){
+    while(first_row<0 || first_row>col->tl){
         printf("A partir de quelle ligne voulez-vous supprimer des cellules ? \n");
         scanf(" %d",&first_row);
     }

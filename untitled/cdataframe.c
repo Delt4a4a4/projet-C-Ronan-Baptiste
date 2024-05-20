@@ -1,6 +1,11 @@
 //
 // Created by Baptiste BERTRAND on 17/04/2024.
 //
+/**
+* Projet_C_Ronan_Baptiste
+* Baptiste BERTRAND / Ronan MYCHALSKI
+* Contient les fonctions en lien avec le cdataframe.
+*/
 #include "cdataframe.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +32,7 @@ void fill_CDataframe(CDATAFRAME* cdtframe){
     cdtframe->width=8;
     cdtframe->height=8;
     for (int i=0 ; i<cdtframe->width ; i++){
-        (cdtframe->tab)[i]=create_column("A");
+        (cdtframe->tab)[i]=create_column("untilted");
         for (int j=0 ; j < cdtframe->height ; j++){
             insert_value((cdtframe->tab)[i], 1);
         }
@@ -98,6 +103,7 @@ void display_partial_columns(CDATAFRAME* cdtframe, int limit){
 }
 
 /**
+ * fonction présentant de nombreux disfonctionnements
 * @brief: Allows you to choose a column to modify using its index
 * @param1: Pointer to the CDataframe.
 * @return: modification of CDataframe no need to return something
@@ -136,9 +142,98 @@ void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
     char name[100];
     printf("Saisir le nom de votre nouvelle colonne \n");
     scanf(" %s",name);
-    cdtframe->tab = (COLUMN*) realloc(cdtframe->tab,sizeof(COLUMN)*((cdtframe->width)+1));
+    cdtframe->tab = (COLUMN**) realloc(cdtframe->tab,sizeof(COLUMN)*((cdtframe->width)+1));
     (cdtframe->tab)[cdtframe->width]= create_column(name);
     (cdtframe->width)++;
     printf("%d \n",cdtframe->width);
     printf("%s \n", (cdtframe->tab)[cdtframe->width-1]->titre);
+}
+
+void delete_multiple_columns(CDATAFRAME* cdtframe){
+    int first_column=-1;
+    int last_column=-1;
+    int value=0;
+    while(first_column<0 || first_column>cdtframe->width){
+        printf("A partir de quelle colonne voulez-vous supprimer des colonnes ? \n");
+        scanf(" %d",&first_column);
+    }
+    while(last_column<first_column || last_column>cdtframe->width){
+        printf("Jusqu'a quelle ligne voulez-vous supprimer des cellules (non inclue) ? \n");
+        scanf(" %d",&last_column);
+    }
+    for(int i=first_column; i<last_column ; i++){
+        delete_column_from_CDataframe(cdtframe,first_column);
+    }
+}
+
+
+void delete_column_from_CDataframe(CDATAFRAME* cdtframe, int pos){
+    if(pos>=cdtframe->width){
+        printf("La colonne que vous tentez de supprimer n'existe pas \n");
+        return;
+    }
+    delete_column(&(cdtframe->tab)[pos]);
+    for (int i=pos ; i<(cdtframe->width)-1 ; i++ ){
+        (cdtframe->tab)[i]=(cdtframe->tab)[i+1];
+    }
+    (cdtframe->width)--;
+}
+
+void delete_row_from_CDataframe(CDATAFRAME* cdtframe, int index){
+    if(index>=cdtframe->height){
+        printf("La ligne que vous tentez de supprimer n'existe pas");
+        return;
+    }
+    for(int i=0 ; i<cdtframe->width ; i++){
+        delete_value((cdtframe->tab)[i], index);
+    }
+    (cdtframe->height)--;
+}
+
+int count_occurences_in_cdataframe(CDATAFRAME* cdtframe, int x){
+    int somme=0;
+    for(int i=0 ; i<cdtframe->width ; i++){
+        somme+= count_occurrences((cdtframe->tab)[i],x);
+    }
+    return somme;
+}
+
+int count_greater_in_cdataframe(CDATAFRAME* cdtframe, int x){
+    int somme=0;
+    for(int i=0 ; i<cdtframe->width ; i++){
+        somme+= count_greater((cdtframe->tab)[i],x);
+    }
+    return somme;
+}
+
+int count_lower_in_cdataframe(CDATAFRAME* cdtframe, int x){
+    int somme=0;
+    for(int i=0 ; i<cdtframe->width ; i++){
+        somme+= count_lower((cdtframe->tab)[i],x);
+    }
+    return somme;
+}
+
+void print_width(CDATAFRAME* cdtframe){
+    printf("Votre cdataframe contient %d colonnes \n",cdtframe->width);
+}
+
+void print_height(CDATAFRAME* cdtframe){
+    printf("Votre cdataframe contient %d lignes\n", cdtframe->height);
+}
+
+void append_row_in_cdataframe(CDATAFRAME* cdtframe){
+    int row=-1;
+    int val;
+    while(row<0 || row>=cdtframe->height){
+        printf("Quelle ligne voulez-vous inserer ? (ligne max : %d) \n",cdtframe->height-1);
+        scanf(" %d",&row);
+    }
+
+    for (int i=0 ; i<cdtframe->width ; i++){
+        printf("Saisir la valeur en [%d ; %d] \n", row, i);
+        scanf(" %d",&val);
+        insert_value_in_col((cdtframe->tab)[i],val,row);
+    }
+    (cdtframe->height)++;
 }
