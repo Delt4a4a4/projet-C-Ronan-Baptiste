@@ -17,7 +17,7 @@ int main() {
     print_col(mycol);
     column_menu(mycol);
     print_col(mycol);
-    printf(mycol->tl)
+    printf("%d",mycol->tl);
     printf("%d \n", count_occurrences(mycol,5));
     return 0;
 
