@@ -1,5 +1,5 @@
 # projet-C-Ronan-Baptiste
-Ce projet vise à développer un programme en langage C capable de gérer un tableau à deux dimensions etqui  offre des fonctionnalités de tri par colonne ainsi que d'autres opérations basiques sur le tableau à la façon d'un tableur comme "Excel". Ce projet est réalisé par Ronan MYCHALSKI et Baptiste BERTRAND (étudiants de L1-F).
+Ce projet vise à développer un programme en langage C capable de gérer un tableau à deux dimensions et qui  offre des fonctionnalités de tri par colonne ainsi que d'autres opérations basiques sur le tableau à la façon d'un tableur comme "Excel". Ce projet est réalisé par Ronan MYCHALSKI et Baptiste BERTRAND (étudiants de L1-F).
 
 ## Installation
 
