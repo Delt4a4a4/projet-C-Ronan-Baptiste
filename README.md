@@ -4,6 +4,7 @@ Ce projet vise à développer un programme en langage C capable de gérer un tab
 ## Installation
 
 Notre Cdataframe se trouve sur GitHub à l'adresse suivante : https://github.com/Delt4a4a4/projet-C-Ronan-Baptiste/blob/2/README.md
+Précisions : la branche "courante" est la 2.
 
 
 ## Configuration
