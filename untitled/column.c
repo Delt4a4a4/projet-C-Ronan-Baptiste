@@ -87,6 +87,7 @@ int insert_value_in_col(COLUMN* col, int value, int pos){
 * @param1: Pointer to the column.
 * @param2: New value.
 * @param3: Position where the value is to be modified.
+* @return: modification of the column no need to return something
 */
 void modify_value(COLUMN* col, int value, int pos){
     if(pos>=col->tl) {
@@ -108,6 +109,7 @@ void modify_value(COLUMN* col, int value, int pos){
 * @brief: Delete the value located at the desired position in the column.
 * @param1: Pointer to the column.
 * @param2: Position of the value to be deleted.
+* @return: modification of the column no need to return something
 */
 void delete_value(COLUMN* col, int pos){
     if(pos>=col->tl){
@@ -123,6 +125,7 @@ void delete_value(COLUMN* col, int pos){
 /**
 * @brief: Fill a column from the last occupied position of the column up to a user-chosen row.
 * @param1: Pointer to the column.
+* @return: modification of the column no need to return something
 */
 void fill_column(COLUMN* col){
     int size=-1;
@@ -142,6 +145,7 @@ void fill_column(COLUMN* col){
 /**
 * @brief: Fill a column from a user-chosen start position up to a user-chosen end position and replace existing values.
 * @param1: Pointer to the column.
+* @return: modification of the column no need to return something
 */
 void fill_and_replace_column(COLUMN* col){
     int first_row=-1;
@@ -166,6 +170,7 @@ void fill_and_replace_column(COLUMN* col){
 /**
 * @brief : Free allocated memory
 * @param1 : Pointer to a column
+* @return: deleting the column no need to return something
 */
 void delete_column(COLUMN** col){
     free((*col)->tab);
@@ -175,6 +180,7 @@ void delete_column(COLUMN** col){
 /**
 * @brief: Print a column content
 * @param: Pointer to a column
+* @return : display of values thanks to print no need for return
 */
 void print_col(COLUMN* col){
     for (int i=0; i<col->tl ; i++){
@@ -247,6 +253,7 @@ int count_lower(COLUMN* col, int value){
 /**
 * @brief: Allows you to choose the actions you want to perform on the column
 * @param1: Pointer to a column
+* @return: modification of the column no need to return something
 */
 void fill_column_menu(COLUMN* col){
     int choice=-1;
@@ -282,6 +289,7 @@ void fill_column_menu(COLUMN* col){
 /**
 * @brief:Allows you to choose whether you want to delete one or more cells and at which row if you choose to delete one cell
 * @param1: Pointer to a column
+* @return: modification of the column no need to return something
 */
 void delete_cells_menu(COLUMN* col){
     int choice=-1;
@@ -307,6 +315,7 @@ void delete_cells_menu(COLUMN* col){
 /**
 * @brief:Allows you to delete several cells from a certain line to another
 * @param1: Pointer to a column
+* @return: modification of the column no need to return something
 */
 void delete_cells_in_column(COLUMN* col){
     int first_row=-1;
@@ -328,6 +337,7 @@ void delete_cells_in_column(COLUMN* col){
 /**
 * @brief:Allows you to choose whether you want to modify/fill a cell or delete one or more cells
 * @param1: Pointer to a column
+* @return: modification of the column no need to return something
 */
 void column_menu(COLUMN* col) {
     int choice = -1;
