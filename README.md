@@ -20,7 +20,7 @@ Il suffit donc de choisir la fonctionnalité que l'on veut grâce au menu, par e
 ## Nous contacter :
 
 Vous pouvez nous contacter aux adresses mail suivantes :
-ronan.michalsky@efrei.net
+ronan.mychalski@efrei.net
 baptiste.bertrand.20231493@efrei.net
 
 
