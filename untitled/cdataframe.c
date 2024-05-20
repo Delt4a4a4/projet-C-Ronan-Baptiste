@@ -113,11 +113,11 @@ void unique_column_choice(CDATAFRAME* cdtframe){
     int n=-1;
     int test=0;
     while(n<0){
-        printf("Quel est l'indice de la colonne que vous voulez modifier ?");
+        printf("Quel est l'indice de la colonne que vous voulez modifier ? \n");
         scanf(" %d",&n);
     }
     if(n>cdtframe->width){
-        printf("Cette colonne n'existe pas, voulez-vous créer une colonne %d ? \n 1) Oui \n 2) Non",cdtframe->width);
+        printf("Cette colonne n'existe pas, voulez-vous creer une colonne %d ? \n 1) Oui \n 2) Non",cdtframe->width);
         scanf(" %d",&test);
         if(test==1){
             Create_Cdataframe_Column(cdtframe);
@@ -151,6 +151,10 @@ void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
 }
 
 void delete_multiple_columns(CDATAFRAME* cdtframe){
+    if (cdtframe->width==0){
+        printf("Erreur, le cdataframe est vide \n");
+        return;
+    }
     int first_column=-1;
     int last_column=-1;
     int value=0;
@@ -169,6 +173,10 @@ void delete_multiple_columns(CDATAFRAME* cdtframe){
 
 
 void delete_column_from_CDataframe(CDATAFRAME* cdtframe, int pos){
+    if (cdtframe->width==0){
+        printf("Erreur, le cdataframe est vide \n");
+        return;
+    }
     if(pos>=cdtframe->width){
         printf("La colonne que vous tentez de supprimer n'existe pas \n");
         return;
@@ -226,8 +234,8 @@ void print_height(CDATAFRAME* cdtframe){
 void append_row_in_cdataframe(CDATAFRAME* cdtframe){
     int row=-1;
     int val;
-    while(row<0 || row>=cdtframe->height){
-        printf("Quelle ligne voulez-vous inserer ? (ligne max : %d) \n",cdtframe->height-1);
+    while(row<0 || row>cdtframe->height){
+        printf("Quelle ligne voulez-vous inserer ? (ligne max : %d) \n",cdtframe->height);
         scanf(" %d",&row);
     }
 
@@ -247,7 +255,7 @@ void rename_cdataframe_column(CDATAFRAME* cdtframe){
         return;
     }
     while(column<0 || column>=cdtframe->width){
-        printf("Quelle colonne voulez-vous renommer ? (ligne max : %d) \n",cdtframe->height-1);
+        printf("Quelle colonne voulez-vous renommer ? (colonne max : %d) \n",cdtframe->width-1);
         scanf(" %d",&column);
     }
     rename_column((cdtframe->tab)[column]);
@@ -260,7 +268,7 @@ void print_cdataframe_column_name(CDATAFRAME* cdtframe){
         return;
     }
     while(column<0 || column>=cdtframe->width){
-        printf("Voulez-vous afficher le nom de quelle colonne ? (ligne max : %d) \n",cdtframe->height-1);
+        printf("Voulez-vous afficher le nom de quelle colonne ? (colonne max : %d) \n",cdtframe->width-1);
         scanf(" %d",&column);
     }
     printf("Le nom de la colonne %d est %s \n",column,(cdtframe->tab)[column]->titre);
@@ -272,3 +280,172 @@ void print_full_cdataframe_titles(CDATAFRAME* cdtframe){
         printf(" [%d] %s \n",i,(cdtframe->tab)[i]->titre);
     }
 }
+
+void cdataframe_menu(CDATAFRAME* cdtframe) {
+    int choice = -1;
+    while (choice != 6) {
+        printf("\nMenu principal du CDATAFRAME : \n");
+        printf("Que voulez-vous faire ? \n"
+               " 1) Modifier/Ajouter une unique colonne (fonction inachevee) \n"
+               " 2) Remplir le CDATAFRAME en dur \n"
+               " 3) Modifier les lignes/colonnes du CDATAFRAME \n"
+               " 4) Acceder aux fonctions d'affichage du CDATAFRAME \n"
+               " 5) Acceder aux fonctions d'analyse et statistiques du CDATAFRAME \n"
+               " 6) Sortir/Retourner en arriere \n");
+        scanf(" %d", &choice);
+        switch (choice) {
+            case 1 : {
+                unique_column_choice(cdtframe);
+                break;
+            }
+            case 2 : {
+                fill_CDataframe(cdtframe);
+                break;
+            }
+            case 3 : {
+                modif_cdataframe_menu(cdtframe);
+                break;
+            }
+            case 4 : {
+                display_cdataframe_menu(cdtframe);
+                break;
+            }
+            case 5 : {
+                additionnal_cdataframe_functions_menu(cdtframe);
+                break;
+            }
+        }
+    }
+}
+
+    void display_cdataframe_menu(CDATAFRAME *cdtframe) {
+        int choice = -1;
+        while (choice != 6) {
+            printf("\nMenu d'affichage du CDATAFRAME : \n");
+            printf("Que voulez-vous faire ? \n"
+                   " 1) Afficher le CDATAFRAME en entier \n"
+                   " 2) Afficher jusqu'a une certaine ligne du CDATAFRAME \n"
+                   " 3) Afficher jusqu'a une certaine colonne du CDATAFRAME \n"
+                   " 4) Afficher le nom d'une colonne \n"
+                   " 5) Afficher le nom de l'ensemble des colonnes \n"
+                   " 6) Sortir/Retourner en arriere \n");
+            scanf(" %d", &choice);
+            switch (choice) {
+                case 1 : {
+                    display_full_CDataframe(cdtframe);
+                    break;
+                }
+                case 2 : {
+                    int row = -1;
+                    while (row < 0 || row >= cdtframe->height) {
+                        printf("Jusqu'a quelle ligne voulez-vous afficher ? (ligne max : %d) \n", cdtframe->height - 1);
+                        scanf(" %d", &row);
+                    }
+                    display_partial_rows(cdtframe, row);
+                    break;
+                }
+                case 3 : {
+                    int column = -1;
+                    while (column < 0 || column >= cdtframe->width) {
+                        printf("Jusqu'a quelle colonne voulez-vous afficher ? (colonne max : %d) \n",
+                               cdtframe->width - 1);
+                        scanf(" %d", &column);
+                    }
+                    display_partial_columns(cdtframe, column);
+                    break;
+                }
+                case 4 : {
+                    print_cdataframe_column_name(cdtframe);
+                    break;
+                }
+                case 5 : {
+                    print_full_cdataframe_titles(cdtframe);
+                    break;
+                }
+            }
+        }
+    }
+
+    void modif_cdataframe_menu(CDATAFRAME *cdtframe) {
+        if (cdtframe->width==0){
+            printf("Erreur, le cdataframe est vide, vous ne pouvez pas acceder à ce menu \n");
+            return;
+        }
+        int choice = -1;
+        while (choice != 5) {
+            printf("\nMenu de modification du CDATAFRAME : \n");
+            printf("Que voulez-vous faire ? \n"
+                   " 1) Ajouter une ligne au CDATAFRAME \n"
+                   " 2) Supprimer une ligne au CDATAFRAME \n"
+                   " 3) Supprimer une colonne au CDATAFRAME \n"
+                   " 4) Supprimer plusieurs colonnes du CDATAFRAME \n"
+                   " 5) Sortir/Retourner en arriere \n");
+            scanf(" %d", &choice);
+            switch (choice) {
+                case 1 : {
+                    append_row_in_cdataframe(cdtframe);
+                    break;
+                }
+                case 2 : {
+                    int row = -1;
+                    while (row < 0 || row >= cdtframe->height) {
+                        printf("Quelle ligne voulez-vous supprimer ? (ligne max : %d) \n", cdtframe->height - 1);
+                        scanf(" %d", &row);
+                    }
+                    delete_row_from_CDataframe(cdtframe, row);
+                    break;
+                }
+                case 3 : {
+                    int column = -1;
+                    while (column < 0 || column >= cdtframe->width) {
+                        printf("Quelle colonne voulez-vous supprimer ? (colonne max : %d) \n", cdtframe->width - 1);
+                        scanf(" %d", &column);
+                    }
+                    delete_column_from_CDataframe(cdtframe, column);
+                    break;
+                }
+                case 4 : {
+                    delete_multiple_columns(cdtframe);
+                    break;
+                }
+            }
+        }
+    }
+
+    void additionnal_cdataframe_functions_menu(CDATAFRAME *cdtframe) {
+        int choice = -1, val = 0;
+        while (choice != 5) {
+            printf("\nMenu des fonctions d'Analyse du CDATAFRAME : \n");
+            printf("Que voulez-vous faire ? \n"
+                   " 1) Savoir si une valeur est presente dans le CDATAFRAME \n"
+                   " 2) Savoir le nombre d'occurences d'une valeur \n"
+                   " 3) Savoir le nombre de valeurs plus grandes qu'une valeur \n"
+                   " 4) Savoir le nombre de valeurs plus petites qu'une valeur  \n"
+                   " 5) Sortir/Retourner en arriere \n");
+            scanf(" %d", &choice);
+            switch (choice) {
+                case 1 : {
+                    append_row_in_cdataframe(cdtframe);
+                    break;
+                }
+                case 2 : {
+                    printf("Saisir la valeur \n");
+                    scanf(" %d", &val);
+                    printf("Le nombre d'occurences de la valeur %d est %d",val,count_occurrences_in_cdataframe(cdtframe, val));
+                    break;
+                }
+                case 3 : {
+                    printf("Saisir la valeur \n");
+                    scanf(" %d", &val);
+                    printf("Le nombre de valeur plus grandes que %d est %d",val,count_greater_in_cdataframe(cdtframe, val));
+                    break;
+                }
+                case 4 : {
+                    printf("Saisir la valeur \n");
+                    scanf(" %d", &val);
+                    printf("Le nombre de valeur plus petites que %d est %d",val,count_lower_in_cdataframe(cdtframe, val));
+                    break;
+                }
+            }
+        }
+    }

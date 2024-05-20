@@ -68,11 +68,18 @@ void append_row_in_cdataframe(CDATAFRAME* cdtframe);
 
 void rename_cdataframe_column(CDATAFRAME* cdtframe);
 
-void print_column_name(CDATAFRAME* cdtframe);
 
 void print_cdataframe_column_name(CDATAFRAME* cdtframe);
 
 void print_full_cdataframe_titles(CDATAFRAME* cdtframe);
+
+void display_cdataframe_menu(CDATAFRAME* cdtframe);
+
+void modif_cdataframe_menu(CDATAFRAME* cdtframe);
+
+void additionnal_cdataframe_functions_menu(CDATAFRAME* cdtframe);
+
+void cdataframe_menu(CDATAFRAME* cdtframe);
 
 #endif //PROJET_CDATAFRAME_H
 
