@@ -21,6 +21,7 @@ CDATAFRAME* create_empty_CDataframe(){
 /**
 * @brief: Fill the CDataframe from user inputs or hard-coded values.
 * @param1: Pointer to the CDataframe to be filled.
+* @return: modification of CDataframe no need to return something
 */
 void fill_CDataframe(CDATAFRAME* cdtframe){
     cdtframe->width=8;
@@ -38,6 +39,7 @@ void fill_CDataframe(CDATAFRAME* cdtframe){
 /**
 * @brief: Display the entire CDataframe.
 * @param1: Pointer to the CDataframe to be displayed.
+* @return: modification of CDataframe no need to return something
 */
 void display_full_CDataframe(CDATAFRAME* cdtframe){
     for (int i=0 ; i<cdtframe->width ; i++){
@@ -63,6 +65,7 @@ void display_full_CDataframe(CDATAFRAME* cdtframe){
 * @brief: Display a portion of the rows of the CDataframe according to a limit provided by the user.
 * @param1: Pointer to the CDataframe.
 * @param2: Limit provided by the user (number of rows to display).
+* @return: modification of CDataframe no need to return something
 */
 void display_partial_rows(CDATAFRAME* cdtframe, int limit){
     if (limit > cdtframe->height) {
@@ -80,6 +83,7 @@ void display_partial_rows(CDATAFRAME* cdtframe, int limit){
 * @brief: Display a portion of the columns of the CDataframe according to a limit provided by the user.
 * @param1: Pointer to the CDataframe.
 * @param2: Limit provided by the user (number of columns to display).
+* @return: modification of CDataframe no need to return something
 */
 void display_partial_columns(CDATAFRAME* cdtframe, int limit){
     if (limit > cdtframe->width) {
@@ -96,6 +100,7 @@ void display_partial_columns(CDATAFRAME* cdtframe, int limit){
 /**
 * @brief: Allows you to choose a column to modify using its index
 * @param1: Pointer to the CDataframe.
+* @return: modification of CDataframe no need to return something
 */
 void unique_column_choice(CDATAFRAME* cdtframe){
     int n=-1;
@@ -122,8 +127,9 @@ void unique_column_choice(CDATAFRAME* cdtframe){
 }
 
 /**
-* @brief: Allows you to create an empty column in the dataframe
+* @brief: Allows you to create an empty column in the Cdataframe
 * @param1: Pointer to the CDataframe.
+* @return: modification of CDataframe no need to return something
 */
 void Create_Cdataframe_Column(CDATAFRAME* cdtframe){
     COLUMN** p=NULL;
