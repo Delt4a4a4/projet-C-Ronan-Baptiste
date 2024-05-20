@@ -3,7 +3,7 @@ Ce projet vise à développer un programme en langage C capable de gérer un tab
 
 ## Installation
 
-Notre Cdataframe ce trouve sur GitHub à l'adresse suivante : https://github.com/Delt4a4a4/projet-C-Ronan-Baptiste
+Notre Cdataframe se trouve sur GitHub à l'adresse suivante : https://github.com/Delt4a4a4/projet-C-Ronan-Baptiste
 
 
 ## Configuration
@@ -14,7 +14,6 @@ L'execution de ce programme nécessite un interpréteur de langage C pouvant acc
 
 L'utilisation de notre CDATAFRAME se fera depuis un menu disponible lors de l'exécution du fichier main.c à l'aide un interpréteur de langage C.
 Il suffit donc de choisir la fonctionnalité que l'on veut grâce au menu, par exeple fill cdataframe puis faire ce que le code vous dis de faire.
-
 
 
 ## Nous contacter :
