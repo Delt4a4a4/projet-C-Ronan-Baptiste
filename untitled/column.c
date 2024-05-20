@@ -243,6 +243,10 @@ int count_lower(COLUMN* col, int value){
     return occ;
 }
 
+/**
+* @brief: Allows you to choose the actions you want to perform on the column
+* @param1: Pointer to a column
+*/
 void fill_column_menu(COLUMN* col){
     int choice=-1;
     printf("\nMenu de remplissage d'une colonne : \n");
@@ -271,6 +275,10 @@ void fill_column_menu(COLUMN* col){
     }
 }
 
+/**
+* @brief:Allows you to choose whether you want to delete one or more cells and at which row if you choose to delete one cell
+* @param1: Pointer to a column
+*/
 void delete_cells_menu(COLUMN* col){
     int choice=-1;
     while(choice!=1 && choice!=2){
@@ -289,6 +297,10 @@ void delete_cells_menu(COLUMN* col){
     }
 }
 
+/**
+* @brief:Allows you to delete several cells from a certain line to another
+* @param1: Pointer to a column
+*/
 void delete_cells_in_column(COLUMN* col){
     int first_row=-1;
     int last_row=-1;
@@ -306,6 +318,10 @@ void delete_cells_in_column(COLUMN* col){
     }
 }
 
+/**
+* @brief:Allows you to choose whether you want to modify/fill a cell or delete one or more cells
+* @param1: Pointer to a column
+*/
 void column_menu(COLUMN* col) {
     int choice = -1;
     while (choice != 1 && choice != 2) {
