@@ -9,6 +9,7 @@
 #include "cdataframe.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "column.h"
 
 /**
@@ -190,7 +191,7 @@ void delete_row_from_CDataframe(CDATAFRAME* cdtframe, int index){
     (cdtframe->height)--;
 }
 
-int count_occurences_in_cdataframe(CDATAFRAME* cdtframe, int x){
+int count_occurrences_in_cdataframe(CDATAFRAME* cdtframe, int x){
     int somme=0;
     for(int i=0 ; i<cdtframe->width ; i++){
         somme+= count_occurrences((cdtframe->tab)[i],x);
@@ -236,4 +237,38 @@ void append_row_in_cdataframe(CDATAFRAME* cdtframe){
         insert_value_in_col((cdtframe->tab)[i],val,row);
     }
     (cdtframe->height)++;
+}
+
+void rename_cdataframe_column(CDATAFRAME* cdtframe){
+    char title[100];
+    int column=-1;
+    if(cdtframe->width==0){
+        printf("Cdataframe vide \n");
+        return;
+    }
+    while(column<0 || column>=cdtframe->width){
+        printf("Quelle colonne voulez-vous renommer ? (ligne max : %d) \n",cdtframe->height-1);
+        scanf(" %d",&column);
+    }
+    rename_column((cdtframe->tab)[column]);
+}
+
+void print_cdataframe_column_name(CDATAFRAME* cdtframe){
+    int column=-1;
+    if(cdtframe->width==0){
+        printf("Cdataframe vide \n");
+        return;
+    }
+    while(column<0 || column>=cdtframe->width){
+        printf("Voulez-vous afficher le nom de quelle colonne ? (ligne max : %d) \n",cdtframe->height-1);
+        scanf(" %d",&column);
+    }
+    printf("Le nom de la colonne %d est %s \n",column,(cdtframe->tab)[column]->titre);
+}
+
+void print_full_cdataframe_titles(CDATAFRAME* cdtframe){
+    printf("Les noms des colonnes du cdataframe sont :");
+    for (int i=0 ; i<cdtframe->width ; i++){
+        printf(" [%d] %s \n",i,(cdtframe->tab)[i]->titre);
+    }
 }

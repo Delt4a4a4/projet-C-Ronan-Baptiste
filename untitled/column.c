@@ -361,3 +361,15 @@ void column_menu(COLUMN* col) {
         }
     }
 }
+
+void rename_column(COLUMN* col){
+    char title[100];
+    printf("Comment voulez-vous appeler votre colonne ?");
+    scanf(" %s",title);
+    col->titre=(char *)realloc(col->titre,(sizeof(char)*(strlen(title)+1)));
+    strcpy(col->titre,title);
+}
+
+void print_name_column(COLUMN* col){
+    printf("Le nom de votre colonne est %s",col->titre);
+}

@@ -54,7 +54,7 @@ void unique_column_choice(CDATAFRAME* cdtframe);
 
 void delete_multiple_columns(CDATAFRAME* cdtframe);
 
-int count_occurences_in_cdataframe(CDATAFRAME* cdtframe, int x);
+int count_occurrences_in_cdataframe(CDATAFRAME* cdtframe, int x);
 
 int count_greater_in_cdataframe(CDATAFRAME* cdtframe, int x);
 
@@ -65,6 +65,14 @@ void print_width(CDATAFRAME* cdtframe);
 void print_height(CDATAFRAME* cdtframe);
 
 void append_row_in_cdataframe(CDATAFRAME* cdtframe);
+
+void rename_cdataframe_column(CDATAFRAME* cdtframe);
+
+void print_column_name(CDATAFRAME* cdtframe);
+
+void print_cdataframe_column_name(CDATAFRAME* cdtframe);
+
+void print_full_cdataframe_titles(CDATAFRAME* cdtframe);
 
 #endif //PROJET_CDATAFRAME_H
 
