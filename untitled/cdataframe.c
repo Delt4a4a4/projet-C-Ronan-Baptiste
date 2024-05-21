@@ -508,7 +508,7 @@ void additionnal_cdataframe_functions_menu(CDATAFRAME *cdtframe) {
             scanf(" %d", &choice);
             switch (choice) {
                 case 1 : {
-                    append_row_in_cdataframe(cdtframe);
+                    check_value_existence_in_CDataframe(cdtframe);
                     break;
                 }
                 case 2 : {
@@ -532,3 +532,15 @@ void additionnal_cdataframe_functions_menu(CDATAFRAME *cdtframe) {
             }
         }
     }
+
+void check_value_existence_in_CDataframe(CDATAFRAME* cdtframe){
+    int val=0;
+    printf("Saisir la valeur que vous voulez rechercher : \n");
+    scanf(" %d",&val);
+    if(count_occurrences_in_cdataframe(cdtframe,val)!=0){
+        printf("La valeur %d est presente dans le CDATAFRAME \n",val);
+    }
+    else{
+        printf("La valeur %d n'est pas presente dans le CDATAFRAME \n",val);
+    }
+}

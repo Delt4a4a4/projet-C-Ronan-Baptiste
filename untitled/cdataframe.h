@@ -40,7 +40,7 @@ void delete_column_from_CDataframe(CDATAFRAME* cdtframe, int pos);
 
 void rename_column_in_CDataframe(CDATAFRAME* cdtframe, int index, char* title);
 
-int check_value_existence_in_CDataframe(CDATAFRAME* cdtframe, int value);
+void check_value_existence_in_CDataframe(CDATAFRAME* cdtframe);
 
 int access_cell_in_CDataframe(CDATAFRAME* cdtframe, int row, int column);
 
@@ -80,6 +80,7 @@ void modif_cdataframe_menu(CDATAFRAME* cdtframe);
 void additionnal_cdataframe_functions_menu(CDATAFRAME* cdtframe);
 
 void cdataframe_menu(CDATAFRAME* cdtframe);
+
 
 #endif //PROJET_CDATAFRAME_H
 
